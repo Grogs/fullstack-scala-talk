@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>reveal.js</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/sky.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement( 'link' );
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName( 'head' )[0].appendChild( link );
+	</script>
+	<style>
+		html.dimbg .slide-background {
+			opacity: 0.3 !important;
+			filter: blur(4px);
+		}
+	</style>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>An Introduction to Scala.js</h1>
+			</section>
+			<section data-markdown data-separator="^~~~~" data-separator-vertical="^~" data-notes="^Note:">
+			    <script type="text/template">
+					About me
+					~
+					I am a Scala Developer @ Hotels.com
+					~
+					Started learning Scala in 2009, first job in 2012.  
+					Familiar with frontend through personal projects.
+
+					Note:
+
+					* Angular, Polymer, Vue.js, jQuery
+					~
+					Using Scala.js in personal projects for a year.  
+					~
+					So why am I here?  
+					~
+					Because Scala.js is good  
+					
+					And not enough people are talking about it  <!-- .element: class="fragment" -->
+
+
+
+					~~~~
+					So what is Scala.js  
+					~
+					It's a compiler plugin which allows you to compile Scala to JavaScript  
+
+					Note:
+
+					Started by Sébastien Doeraene at EPFL around 3.5 years ago  
+					~
+					You can use it to write your JavaScript web frontend.  
+					But there are other usecases.  
+
+					Note:
+					* Web frontend is where most of the community's effort is going, but there's nothing that technically limits it
+					* People have used it with NodeJS on the server.
+					* I've used that a little myself: Electron with Scala.js, which leverages NodeJS
+					~
+					To use it, add a plugin to your SBT build, and enable it for one of your projects.
+
+					Note:
+					* You can cross compile projects for JVM and JS, or have pure JS projects.
+					* Not everything works (most of Java stdlib isn't available, which Scala stdlib uses).
+					* But maybe more than you think.
+					~
+					Or clone one of the [skeleton projects](https://www.scala-js.org/libraries/skeletons.html) to get started: 
+					- [A pure Scala.js project](https://github.com/lihaoyi/workbench-example-app)
+					- [Play server and Scala.js client](https://github.com/vmunier/play-with-scalajs-example)
+					- [Scala.js targetting NodeJS](https://github.com/rockymadden/scala-node-example)
+
+					
+
+
+					~~~~
+					Why use Scala.js?  
+					~
+					Share logic or domain model across client and server.  
+
+					You can refactor some code on the server and the template will be updated!  <!-- .element: class="fragment" -->
+					~
+					Make the client more typesafe  
+
+					Catch more errors at compile time
+
+					Note: 
+					Much moreso than JavaScript.  
+					Even linters aren't going to get you that much typesafety
+					~
+					The type safety goes further than Typescript.
+
+					In TypeScript, you can optionally add types.  
+					In Scala.js, you can optionally go Dynamic.<!-- .element: class="fragment" -->
+
+					~
+					Even your templates are typesafe  
+
+					Much like Play's server side templating
+
+					Note:
+					* People are already used to generating HTML from code, via React. 
+					  This is popular in Scala.js
+					* Jon Pretty's Rapture HTML takes this to the extreme. 
+					  * HTML element nesting constaints at compile time
+					  * and even 'style' attribute's CSS validated at compile time. 
+					  * [Example](https://embed.scalafiddle.io/embed?sfid=hMgI9Bu/1)
+					  * See 'Principles of Elegance' talk from ScalaDays NY 2016
+					
+					~~~~
+					It's more mature/production ready than you think.  
+
+					Note:
+					* No longer experimental (since Feb 2015).  
+					~
+					Already has a rich ecosystem.
+
+					~
+					Lots of existing pure scala libraries already work:
+					- Scalaz
+					- Cats
+					- Shapeless
+					- Monix
+					- Circe
+					- Rapture
+					- Most of the standard library, e.g. Futures
+					~
+					Typesafe fascades for existing libraries (varying quality):
+					- DOM
+					- jQuery
+					- React
+					- Angular
+					- Vue.js
+					- D3
+					~
+					Built for Scala.js:
+					- ScalaTags
+					- ScalaCss
+					- Diode
+					- uPickle and BooPickle
+					- autowire
+					- workbench
+
+					~
+					It's less crazy to use than you think.  
+
+					Scala.js looks similar to JavaScript/ES6  
+
+					[Demo](https://embed.scalafiddle.io/embed?sfid=8D8UXdW/6)
+
+					~~~~
+
+					###My experiences
+					~
+					[artimap.com](http://www.artimap.com)  
+					Play app with a Scala.JS frontend.  
+					Scalatags. 😃  
+					Scala.Rx. 🤐  
+					Google Maps API. 🤗
+					~
+					[fulfilmed.com](http://www.fulfilmed.com)  
+					Previously used Polymer.  
+					Akka HTTP with Scala.js React frontend.
+					  
+
+					scalajs-react-components looks good.  
+					Wrappers for Material UI and Elemental UI and more. <!-- .element: class="fragment" -->
+					~
+					####Teaching Java devs Scala.js  
+
+					- Teaching fullstack web dev in Scala/Play to 10+ Java devs.  
+					- We don't write any JavaScript directly.  
+					- It is working well!
+
+					~~~~
+					####Extended Tutorials/Books  
+					[Hands-on Scala.js](http://www.lihaoyi.com/hands-on-scala-js/) by Li Haoyi  
+					[Scala.js SPA-tutorial](https://ochrons.github.io/scalajs-spa-tutorial/en/index.html) by Otto Chrons
+				
+				
+			    </script>
+			</section>				
+			</section>
+<!-- 			<section>
+				<h2>Why Scala.js?</h2>
+				<ul>
+					<li>Easily share models and expose APIs</li>
+				</ul>
+				<aside class="notes">
+					<ul>
+						<li>No problem sharing case classes. You can use Haoyi Li's 'Autowire'</li>
+					</ul>
+				</aside>
+			</section>
+			<section>
+				<h2>Why not Scala.js?</h2>
+				<ul>
+					<li>Don't use it to build a JavaScript library.</li>
+
+				</ul>
+				<aside class="notes">
+					<ul>
+						<li>Scala.js created big minified blobs. Good for an application, bad for a library.</li>
+					</ul>
+				</aside>
+			</section>
+			<section>
+				<h2>Resources</h2>
+				<p>If I've peaked your interest, then these are some useful resources.</p>
+				<ul>
+					<li><a href="http://www.lihaoyi.com/hands-on-scala-js/">Hands-on Scala.js by Li Haoyi</a></li>
+					<li><a href="https://ochrons.github.io/scalajs-spa-tutorial/en/index.html">Scala.js SPA-tutorial by Otto Chrons</a></li>
+					<li><a href="https://gitter.im/scala-js/scala-js">Scala.js on Gitter</a> if you need help</li>
+				</ul>
+			</section> -->
+			<section>
+				<h1>Questions?</h1>
+				<img src="images/notsure.gif" alt="">
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+	</html>
